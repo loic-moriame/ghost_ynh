@@ -73,7 +73,7 @@ ynh_app_setting_set $app port $port
 #=================================================
 
 # install nodejs
-ynh_install_nodejs 8
+ynh_install_nodejs 12
 
 # add yarn repo for Debian
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -132,10 +132,10 @@ cp ../conf/config.production.json "$final_path/config.production.json"
 # Install the dependencies with yarn
 (
 	cd "$final_path"
-	yarn install 
+	yarn install
 	yarn global add knex-migrator
 
- 
+
 )
 
 #=================================================
@@ -163,7 +163,7 @@ NODE_ENV=production knex-migrator init
 ynh_store_file_checksum "$final_path/config.production.json"
 
 #=================================================
-# SET WRITE PERMISSION 
+# SET WRITE PERMISSION
 #=================================================
 
 # Set right permissions for curl install
